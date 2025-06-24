@@ -1,0 +1,64 @@
+.background{
+    background-image: url('/public/image/bg2.png');
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.single-book-container {
+    padding: 100px 20px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.book-details-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: flex;
+    max-width: 900px;
+    width: 100%;
+    padding: 30px;
+    gap: 30px;
+}
+
+.book-cover {
+    width: 300px;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.book-info h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.book-info h3 {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.book-description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.book-meta {
+    font-size: 15px;
+    color: #333;
+}
+.update-btn{
+    background-color: #c0b772;
+    font-weight: 500;
+   
+    
+}
+.delete-btn{
+    background-color: rgb(187, 85, 85);
+    color: white;
+    font-weight: 500;
+}

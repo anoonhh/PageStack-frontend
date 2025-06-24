@@ -1,0 +1,79 @@
+@font-face {
+    font-family: cursive;
+    src: url('../../public/fonts/Noto_Serif/static/NotoSerif-Bold.ttf');
+}
+
+
+.logo {
+    font-size: 2.6rem !important;
+    font-weight: bolder;
+    color: #2e2e2e !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+}
+
+.registration{
+    background-image: 
+     /* linear-gradient(to left, #9CA8A0, rgba(255 255 255 / 7%)), */
+    linear-gradient(to left, #f4eee8 30%, rgba(255, 255, 255, 0.07) 100%),
+
+
+    /* linear-gradient(to left, #9CA8A0, rgba(255 255 255 / 10%)), */
+    /* linear-gradient(to right, rgba(255, 255, 255, 0.1) 0%, #9CA8A0 50%), */
+
+
+    url('../../public/image/bg2.png');
+
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+
+}
+/* .row {
+  height: 100%;
+}
+.container{
+    height: 100%;
+}
+.col-md-6 {
+  height: 100%;
+} */
+
+.reg-h1{
+    padding-top: 80px;
+}
+.input-design {
+     width: 100%;
+    background-color: transparent;
+    border: solid 1px black;
+    border-radius: 5px;
+    padding: 1%;
+}
+input[type='file'] {
+    border: 1px solid black !important;
+    background-color: transparent !important;
+}
+.registration button{
+     width: 100%;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 1%;
+    border-radius: 5px;
+}
+.registration hr{
+    height: 2px;
+    width: 50%;
+    margin-top: 50px ;
+    margin-bottom: 40px;
+}
+
+.registration a{
+     text-decoration: none;
+    color: black;
+    font-family: cursive; 
+    font-size: 1rem;
+}
+.registration p {
+    margin-bottom: 80px;
+}

@@ -1,0 +1,382 @@
+
+
+
+
+@font-face {
+    font-family: cursive-head;
+    src: url('../../public/fonts/Edu_NSW_ACT_Cursive/static/EduNSWACTCursive-Medium.ttf');
+}
+@font-face {
+    font-family: p-font;
+    src: url('../../public/fonts/Edu_NSW_ACT_Cursive/static/EduNSWACTCursive-Regular.ttf');
+}
+
+@font-face {
+    font-family: menu-font;
+    src: url('../../public/fonts/Poppins/Poppins-Medium.ttf');
+}
+
+/* .header{
+  z-index: 1001; */
+  /* position: fixed;         Keep it at top */
+  /* top: 0;                   */
+  /* left: 0; */
+  /* width: 100%; */
+  /* background: rgba(255, 255, 255, 0.2);
+}
+.header h1{
+    font-family: cursive-head;
+} */
+
+/* .header-components a{
+    text-decoration: none;
+    color: black; */
+    /* font-family: p-font; */
+/* } */
+
+
+/* slide 1  */
+/* .design-background-1 {
+  
+  background: linear-gradient(135deg, #d1dbbd, #a3c6b4, #91a7b0);
+  margin: 86px;
+  position: relative;
+  
+}
+.design-background-1 img{
+    width: 50%;
+    padding-top: 14%;
+   z-index: 90;
+}
+
+.background-text-1 h4{
+    position: absolute;
+    color: #70591e91;
+    top: 8%;
+    left: 14%;
+    z-index: 3;
+    font-size: 2rem;
+}
+
+.background-text-1 h1{
+    text-shadow: 3px 7px 16px rgba(0, 0, 0, 0.3); */
+    /* text-shadow: 2px 2px 5px rgba(0,0,0,0.3); */
+    /* position: absolute;
+    z-index: 4;
+    top: 11%;
+    left: 13%; */
+    /* font-size: 12rem; */
+    /* color: #5c3a1e; */
+    /* background: linear-gradient(to bottom, #5c3a1e, rgb(123, 91, 91));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
+
+/* .background-text-1 p{
+    font-family: p-font ;
+    position: absolute;
+    top: 60%;
+    right: 9%;
+    left: 10%;
+    text-align: center;
+    color: #212529a8;
+} */
+
+/* slide 2 */
+/* .design-background-2 {
+ background: linear-gradient(to bottom right, #fbe8b4, #f5a36c, #c98865);
+  margin: 30px;
+  position: relative;
+}
+.design-background-2 img{
+    width: 41%;
+    padding-top: 11%;
+   z-index: 90;
+}
+
+.background-text-2 h4{
+    position: absolute;
+    color: #5542158a;
+    top: 8%;
+    left: 7%;
+    z-index: 3;
+    font-size: 2rem;
+}
+
+.background-text-2 h1{
+    text-shadow: 3px 7px 16px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    z-index: 4;
+    top: 11%;
+    left: 7%;
+    font-size: 12rem; */
+    /* color: #5c3a1e; */
+    /* background: linear-gradient(to bottom, #880a08, rgb(247 111 37));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.background-text-2 p{
+    font-family: p-font ;
+    position: absolute;
+    top: 57%;
+    right: 17%;
+    left: 20%;
+    text-align: center;
+    color: #212529a8;
+} */
+
+/* slide 3 */
+/* .design-background-3 {
+  
+  background: linear-gradient(120deg, #f8e9e5, #e4b3c0, #c08497, #915f6d);
+
+  margin: 30px;
+  position: relative;
+}
+.design-background-3 img{
+    width: 50%;
+    padding-top: 11%;
+   z-index: 90;
+} */
+
+/* .background-text-3 h4{
+    position: absolute;
+    color: #9924459c;
+    top: 8%;
+    left: 5%;
+    z-index: 3;
+    font-size: 2rem;
+}
+
+.background-text-3 h1{
+    text-shadow: 3px 7px 16px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    z-index: 4;
+    top: 11%;
+    left:   4%;
+    font-size: 12rem; */
+    /* color: #5c3a1e; */
+    /* background: linear-gradient(to right, #b55772cf, #dc3545);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
+
+/* .background-text-3 p{
+    font-family: p-font ;
+    position: absolute;
+    top: 51%;
+    right: 14%;
+    left: 12%;
+    text-align: center;
+    color: #212529a8;
+} */
+
+
+/* slide 4 */
+
+/* 
+.design-background-4 {
+  
+  background: linear-gradient(to bottom, #0f0f1b, #1a2433, #352841, #5e1e2e);
+
+  margin: 30px;
+  position: relative;
+}
+.design-background-4 img{
+    width: 50%;
+    padding-top: 8%;
+   z-index: 90;
+}
+
+.background-text-4 h4{
+    position: absolute;
+    color: #da6b58;
+    top: 8%;
+    left: 8%;
+    z-index: 3;
+    font-size: 2rem;
+}
+
+.background-text-4 h1{
+    text-shadow: 3px 7px 16px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    z-index: 4;
+    top: 10%;
+    left: 7%;
+    font-size: 11rem; */
+    /* color: #5c3a1e; */
+    /* background: linear-gradient(to right, #ff2600, #ff5e3a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
+/* 
+.background-text-4 p{
+    font-family: p-font ;
+    position: absolute;
+    top: 60%;
+    right: 15%;
+    left: 15%;
+    text-align: center;
+    color: #cdc8bd;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.homepage {
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero-section {
+  background-image: url('../../public/image/bg2.png'); /* Add a nice scenic/book-related background */
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  position: relative;
+}
+
+.hero-overlay {
+  background-color:rgb(255 237 255 / 46%);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 5rem;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  max-width: 500px;
+}
+
+/* Sliders */
+.slider {
+  padding: 4rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.slider img {
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+}
+
+.background-text {
+  max-width: 600px;
+}
+
+.background-text h1 {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+}
+
+.background-text h4 {
+  font-weight: 600;
+  color: #5a5a5a;
+}
+
+/* Custom backgrounds per slider (optional gradients) */
+.design-background-1 {
+  background: linear-gradient(to right, #f3e5f5, #ffffff);
+}
+
+.design-background-2 {
+  background: linear-gradient(to right, #e0f7fa, #ffffff);
+}
+
+.design-background-3 {
+  background: linear-gradient(to right, #fce4ec, #ffffff);
+}
+
+.design-background-4 {
+  background: linear-gradient(to right, #ede7f6, #ffffff);
+}
+
+
+
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.05); /* transparent glass effect */
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.logo .brand {
+  color: #000;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.nav-links .nav-item {
+  margin-left: 2rem;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #333;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-links .nav-item:hover::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #333;
+}
+
+.nav-links .nav-item:hover {
+  color: #111;
+}

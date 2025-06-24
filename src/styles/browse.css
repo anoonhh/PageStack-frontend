@@ -1,0 +1,83 @@
+.browse-page {
+  padding: 6rem 3rem 3rem 3rem;
+  /* background: linear-gradient(to right, #e9ecef, #fdfdfd); */
+  /* min-height: 100vh; */
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.browse-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.book-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: #222;
+}
+
+.book-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+}
+
+.book-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  background: #f8f8f8;
+}
+
+.book-details {
+  padding: 1rem;
+}
+
+.book-details h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.book-details h4 {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.6rem;
+}
+
+.book-details p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+
+
+
+.browse{
+  background-image: url('../../public/image/bg2.png');
+  
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  
+}
+.overlay{
+  background-color: rgb(255 237 255 / 46%);
+  /* height: 100%; */
+  min-height: 100vh;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; */
+}
