@@ -46,3 +46,7 @@
     font-family: cursive; 
     font-size: 1rem;
 }
+.error{
+    font-family: 'Courier New', Courier, monospace !important;
+    margin-left: 8px !important;
+}

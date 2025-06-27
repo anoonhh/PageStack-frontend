@@ -1,30 +1,47 @@
-import React, { useState } from 'react'
+
 import '../styles/login.css'
 import Header from '../components/Header'
 import { useNavigate } from 'react-router-dom'
 import api  from '../api.js'
+import { useForm } from 'react-hook-form'
+import {yupResolver} from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+
+const schema = yup.object().shape({
+  email: yup.string().required("Email  is required"),
+  password: yup.string().required("Password is required").min(8, "Password must be atleast 8 characters")
+})
 
 const LoginPage = () => {
-  const [user , setUser] = useState({
-    email : '',
-    password : ''
-  })
+  // const [user , setUser] = useState({
+  //   email : '',
+  //   password : ''
+  // })
   
-  const handleChange = (e) =>{
-    setUser((prev) => ({
-      ...prev,
-      [e.target.name] : e.target.value
-    }))
-  }
+  // const handleChange = (e) =>{
+  //   setUser((prev) => ({
+  //     ...prev,
+  //     [e.target.name] : e.target.value
+  //   }))
+  // }
 
+  //validation
+  const {
+    register,
+    handleSubmit,
+    formState: {errors},
+  } = useForm({
+    resolver: yupResolver(schema)
+  })
 
   const navigate = useNavigate()
   
-  const handleSubmit = async (event) =>{
-    event.preventDefault()
+  const onSubmit = async (data) =>{
 
     try{
-       const res = await api.post('/user/login', user,{
+       const res = await api.post('/user/login',
+        //  user 
+        data,{
           headers : {
             'Content-Type' : 'application/json',
           }
@@ -51,26 +68,31 @@ const LoginPage = () => {
               <div className='col-md-6 '>
                   <h1 className='my-5'>Welcome Back!</h1>
 
-                  <form onSubmit={handleSubmit} encType='application/json'>
+                  <form onSubmit={handleSubmit(onSubmit)} encType='application/json'>
                     <div className='my-4'>
                         <label>Email</label>
                         <input 
                           type='email' 
                           placeholder= ' Enter your email'
-                          name='email'
-                          value={user.email}
-                          onChange={handleChange}
+                          // name='email'
+                          // value={user.email}
+                          // onChange={handleChange}
+                          {...register('email')}
+                          
                           />
+                          <p className='error'>{errors.email?.message}</p>
                     </div>
                     <div className='mb-5'>
                         <label>Password</label>
                         <input 
                           type='password' 
                           placeholder='Enter your password'
-                          name='password'
-                          value={user.password}
-                          onChange={handleChange}
+                          // name='password'
+                          // value={user.password}
+                          // onChange={handleChange}
+                          {...register('password')}
                           />
+                          <p className='error'>{errors.password?.message}</p>
                     </div>
                     
                     <button type='submit'>Log In</button>

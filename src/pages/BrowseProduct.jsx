@@ -12,12 +12,6 @@ const BrowseProduct = () => {
         <BookBrowse/>
       
   
-
-
-
-  
-   
-
     </div>
   )
 }

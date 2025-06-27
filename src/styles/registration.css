@@ -75,5 +75,12 @@ input[type='file'] {
     font-size: 1rem;
 }
 .registration p {
-    margin-bottom: 80px;
+    margin-bottom: 10px;
+}
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin-left: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    
 }

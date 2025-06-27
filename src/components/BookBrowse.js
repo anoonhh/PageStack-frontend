@@ -2,29 +2,39 @@ import { useEffect, useState } from 'react'
 import '../styles/browse.css'
 import api from '../api.js'
 import {Link, useNavigate } from 'react-router-dom'
+import Header from './Header.js'
 
 const BookBrowse = () => {
     const [book , setBook] = useState([])
-
     const token = localStorage.getItem('token')
     const user = JSON.parse(localStorage.getItem("user"))
     const role = user?.role
+
+    //pagination
+    const[page, setPage] = useState(1)
+    const[total, setTotal] = useState(0)
+
+    const limit = 4
+    const skip = (page - 1) * limit
+    const totalPages = Math.ceil(total / limit)
+
     
 
     useEffect(() => {
-        api.get('/api/book', {
+        api.get(`/api/book?limit=${limit}&skip=${skip}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
         })
         .then((res) => {
             setBook(res.data.data)
+            setTotal(res.data.total)
         })
         .catch((error) => {
          
           alert('Error fetching books');
       });
-    }, []);
+    }, [page]);
 
     
 
@@ -37,7 +47,8 @@ const BookBrowse = () => {
   return (
     <div className='browse'>
         <div className='overlay '>
-            <h1 className='text-center pt-5'>Explore the World of Words</h1>
+            <Header/>
+                <h1 className='text-center '>Explore the World of Words</h1>
             <div>
                       <div className="browse-page">
                          {role === 'seller' && (
@@ -81,6 +92,30 @@ const BookBrowse = () => {
                 </div>
             </div> */}
         </div>
+
+        {/* pagination button */}
+        <div className="pagination pb-5">
+            <button
+                className='btn me-2'
+                disabled={page === 1}
+                onClick={() => setPage(prev => prev - 1)}
+            >
+                Prev
+            </button>
+            
+            <span>Page {page} of {totalPages}</span>
+
+            <button
+                className='btn ms-2'
+                disabled={page === totalPages}
+                onClick={() => setPage(prev => prev + 1)}
+            >
+                Next
+            </button>
+            </div>
+
+
+
     </div>
     </div>
   )

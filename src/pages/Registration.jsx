@@ -3,44 +3,72 @@ import '../styles/registration.css'
 import api from '../api.js'
 import Header from '../components/Header.js'
 import { useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+
+const schema = yup.object().shape({
+    name : yup.string().required("Name is required"),
+    email : yup.string().required("Email is required"),
+    password : yup.string().required("Password is required").min(8,"Password must be at least 8 characters"),
+    role: yup.string().required('Select role').oneOf(["seller" , "buyer"], 'Select valid role'),
+    image : yup.mixed().required("Image is required")
+     .test("fileExist", "Please upload a file", (value) => {
+    return value && value.length > 0;
+  })
+   .test("fileType", "Only jpg, jpeg or png files are allowed", (value) => {
+    return (
+      value &&
+      value.length > 0 &&
+      ["image/jpeg", "image/png", "image/jpg"].includes(value[0]?.type)
+    );
+  }),
+})
 
 const Registration = () => {
-    const [user, setUser] = useState({
-        name:'',
-        email:'',
-        password:'',
-        role:'',
-        image:null
+    // const [user, setUser] = useState({
+    //     name:'',
+    //     email:'',
+    //     password:'',
+    //     role:'',
+    //     image:null
+    // })
+
+    // const handleChange = (e) => {
+    //     setUser((prev) => ({
+    //         ...prev,
+    //         [e.target.name] : e.target.value
+    //     }))
+    // }
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(schema),
     })
 
-    const handleChange = (e) => {
-        setUser((prev) => ({
-            ...prev,
-            [e.target.name] : e.target.value
-        }))
-    }
+    // const handleImageChange = (event) => {
+    //     setUser((prev) =>({
+    //         ...prev,
+    //         image: event.target.files[0]
+    //     }))
 
-    const handleImageChange = (event) => {
-        setUser((prev) =>({
-            ...prev,
-            image: event.target.files[0]
-        }))
-
-    }
+    // }
 
 
     const navigate = useNavigate()
 
 
-    const handleSubmit = async (event) => {
-        event.preventDefault()
+    const onSubmit = async (data) => {
 
         const formData = new FormData();
-            formData.append('name',user.name)
-            formData.append('email',user.email)
-            formData.append('password',user.password)
-            formData.append('role',user.role)
-            formData.append('image',user.image)
+            formData.append('name',data.name)
+            formData.append('email',data.email)
+            formData.append('password',data.password)
+            formData.append('role',data.role)
+            formData.append('image',data.image[0])
 
             try{
                 const res = await api.post('/user/registration', formData ,{
@@ -51,7 +79,14 @@ const Registration = () => {
                 console.log('registration success', res.data)
                 alert('Registration Successful!')
 
-                navigate('/login')
+                // if(access_token){
+                    localStorage.setItem('token', res.data.access_token)
+                    localStorage.setItem('user',JSON.stringify(res.data.data))
+
+                    navigate('/books')
+                // }
+
+                // navigate('/login')
             }
             catch(error){
                  console.error('registration failed', error.message)
@@ -74,17 +109,19 @@ const Registration = () => {
                     </div>
                     <div className='col-md-6 d-flex flex-column justify-content-end align-items-end'>
                         <h1 className='reg-h1 mt-5'>Welcome Aboard!</h1>
-                        <form onSubmit={handleSubmit} encType='multipart/form-data'>
+                        <form onSubmit={handleSubmit(onSubmit)} encType='multipart/form-data'>
                             <div className='mt-4 mb-2'>
                                 <label>Name:</label>
                                 <input 
                                     className='input-design' 
                                     type='name' 
                                     placeholder='Enter your name!'
-                                    name='name'
-                                    value={user.name}
-                                    onChange={handleChange}
+                                    // name='name'
+                                    {...register('name')}
+                                    // value={user.name}
+                                    // onChange={handleChange}
                                 />
+                                <p className="error">{errors.name?.message}</p>
                             </div>
                             <div className='my-4'> 
                                 <label>Email:</label>
@@ -92,10 +129,12 @@ const Registration = () => {
                                     className='input-design'
                                     type='email' 
                                     placeholder='Enter your email!'
-                                    name='email'
-                                    value={user.email}
-                                    onChange={handleChange}
+                                    {...register('email')}
+                                    // name='email'
+                                    // value={user.email}
+                                    // onChange={handleChange}
                                  />
+                                 <p className="error">{errors.email?.message}</p>
                             </div>
                             <div className='my-4'>
                                 <label>Password:</label>
@@ -103,10 +142,12 @@ const Registration = () => {
                                     className='input-design' 
                                     type='password' 
                                     placeholder='Enter your password!'
-                                    name='password'
-                                    value={user.password}
-                                    onChange={handleChange}
+                                    // name='password'
+                                    // value={user.password}
+                                    // onChange={handleChange}
+                                    {...register('password')}
                                 />
+                                <p className="error">{errors.password?.message}</p>
                             </div>
                             {/* <div className='my-4 '>
                                 <label>Role:</label>
@@ -139,10 +180,11 @@ const Registration = () => {
                                     <input 
                                         className="form-check-input"
                                         type="radio"
-                                        name="role"
+                                        // name="role"
                                         value="seller"
                                         id="seller"
-                                        onChange={handleChange}
+                                        // onChange={handleChange}
+                                        {...register('role')}
                                     />
                                     <label className="form-check-label ms-1" htmlFor="seller">
                                         Seller
@@ -153,16 +195,18 @@ const Registration = () => {
                                     <input 
                                         className="form-check-input"
                                         type="radio"
-                                        name="role"
+                                        // name="role"
                                         value="buyer"
                                         id="buyer"
-                                        onChange={handleChange}
+                                        // onChange={handleChange}
+                                        {...register('role')}
                                     />
                                     <label className="form-check-label ms-1" htmlFor="buyer">
                                         Buyer
                                     </label>
                                     </div>
                                 </div>
+                                    <p className="error">{errors.role?.message}</p>
                                 </div>
 
 
@@ -171,11 +215,12 @@ const Registration = () => {
                                 <input 
                                     className='input-design' 
                                     type='file'
-                                    name='image'
+                                    // name='image'
                                     accept='image/*'
-                                    
-                                    onChange={handleImageChange}
+                                    // onChange={handleImageChange}
+                                    {...register('image')}
                                     />
+                                    <p className="error">{errors.image?.message}</p>
                             </div>
                             <button type='submit' >Sign up</button>
                         </form>

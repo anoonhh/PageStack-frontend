@@ -62,3 +62,17 @@
     color: white;
     font-weight: 500;
 }
+
+.action-buttons{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    margin-top: auto;
+}
+.book-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90%;
+    position: relative;
+}
