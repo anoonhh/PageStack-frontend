@@ -18,8 +18,6 @@ const BookBrowse = () => {
     const skip = (page - 1) * limit
     const totalPages = Math.ceil(total / limit)
 
-    
-
     useEffect(() => {
         api.get(`/api/book?limit=${limit}&skip=${skip}`, {
             headers: {
@@ -37,12 +35,12 @@ const BookBrowse = () => {
     }, [page]);
 
     
+  
 
-
-// const navigate = useNavigate()
-// const handleClick = (id) => {
-//  navigate(`/${id}`)
-// }
+    // const navigate = useNavigate()
+    // const handleClick = (id) => {
+    //  navigate(`/${id}`)
+    // }
 
   return (
     <div className='browse'>

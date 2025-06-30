@@ -13,16 +13,16 @@ const schema = yup.object().shape({
     password : yup.string().required("Password is required").min(8,"Password must be at least 8 characters"),
     role: yup.string().required('Select role').oneOf(["seller" , "buyer"], 'Select valid role'),
     image : yup.mixed().required("Image is required")
-     .test("fileExist", "Please upload a file", (value) => {
-    return value && value.length > 0;
-  })
-   .test("fileType", "Only jpg, jpeg or png files are allowed", (value) => {
-    return (
-      value &&
-      value.length > 0 &&
-      ["image/jpeg", "image/png", "image/jpg"].includes(value[0]?.type)
-    );
-  }),
+        .test("fileExist", "Please upload a file", (value) => {
+            return value && value.length > 0;
+        })
+        .test("fileType", "Only jpg, jpeg or png files are allowed", (value) => {
+            return (
+            value &&
+            value.length > 0 &&
+            ["image/jpeg", "image/png", "image/jpg"].includes(value[0]?.type)
+            );
+        }),
 })
 
 const Registration = () => {

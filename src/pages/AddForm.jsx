@@ -16,9 +16,9 @@ const schema = yup.object().shape({
   stock: yup
   .number()
   .typeError('Stock must be a number') // handles if user enters letters
-  .transform((value, originalValue) =>
-    String(originalValue).trim() === '' ? undefined : value
-  )
+  // .transform((value, originalValue) =>
+  //   String(originalValue).trim() === '' ? undefined : value
+  // )
   .required('Stock is required')
   .integer('Stock must be an integer')
   .min(0, 'Stock cannot be negative'),

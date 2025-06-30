@@ -9,6 +9,8 @@ import EditBook from './pages/EditForm';
 import SingleBook from './pages/SingleBook';
 import ViewProfile from './pages/ViewProfile';
 import UpdatProfile from './pages/UpdatProfile';
+import PublicRoute from './components/PublicRoute';
+import PrivateRoute from './components/PrivateRoute';
 
 
 function App() {
@@ -16,14 +18,69 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<HomePage/>}/>
-        <Route path='/books' element={<BrowseProduct/>}/>
-        <Route path='/book/:id' element={<SingleBook/>}/>
-        <Route path='/login' element={<LoginPage/>}/>
-        <Route path='/registration' element={<Registration/>}/>
-        <Route path='/addform' element={<AddBook/>}/>
-        <Route path='/editform/:id' element={<EditBook/>}/>
-        <Route path='/viewprofile' element={<ViewProfile/>}/>
-        <Route path='/updateprofile' element={<UpdatProfile/>}/>
+
+        <Route 
+          path='/login' 
+          element={
+            <PublicRoute>
+              <LoginPage/>
+            </PublicRoute>
+          }/>
+
+        <Route 
+          path='/registration' 
+          element={
+            <PublicRoute>
+              <Registration/>
+            </PublicRoute>
+          }/>
+
+        <Route 
+          path='/books' 
+          element={
+            <PrivateRoute>
+              <BrowseProduct/>
+            </PrivateRoute>
+          }/>
+
+        <Route 
+          path='/book/:id' 
+          element={
+            <PrivateRoute>
+              <SingleBook/>
+            </PrivateRoute>
+          }/>
+
+        <Route 
+          path='/addform' 
+          element={
+            <PrivateRoute>
+              <AddBook/>
+            </PrivateRoute>
+          }/>
+
+        <Route 
+          path='/editform/:id' 
+          element={
+            <PrivateRoute>
+              <EditBook/>
+            </PrivateRoute>
+          }/>
+
+        <Route 
+          path='/viewprofile'   
+          element={
+            <PrivateRoute>
+              <ViewProfile/>
+            </PrivateRoute>
+          }/>
+        <Route 
+          path='/updateprofile' 
+          element={
+            <PrivateRoute>
+              <UpdatProfile/>
+            </PrivateRoute>
+          }/>
       </Routes>
     
     </div>

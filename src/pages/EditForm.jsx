@@ -63,12 +63,7 @@ const EditBook = () => {
   //   image:''
   // })
 
-  const {
-        register,
-        handleSubmit,
-        formState: { errors },
-        setValue
-    } = useForm({
+  const { register, handleSubmit,formState: { errors }, setValue } = useForm({
         resolver: yupResolver(schema),
     })
 
@@ -153,6 +148,7 @@ const EditBook = () => {
     })
   }
 
+  // if (!token) return <p className="text-center mt-5">You must be logged in to access..</p>;
 
  
 
