@@ -21,6 +21,7 @@ const ProfileView = () => {
         }).catch((err) => {
             alert("Error fetching profile data!")
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     const handleLogout = () => {
@@ -50,9 +51,9 @@ const ProfileView = () => {
                 <a href='/updateprofile' style={{color: 'grey'}}>
                      <i class="fa-solid fa-user-pen"></i>
                 </a>
-                <a href='' style={{color: 'grey'}} onClick={handleLogout}>
+                <button style={{color: 'grey', border:'none'}} onClick={handleLogout}>
                     <i class="fa-solid fa-right-from-bracket"></i>
-                </a>
+                </button>
             </div>
             
             <div className='text-center mb-4'>
@@ -72,7 +73,6 @@ const ProfileView = () => {
             <h4 className='text-center text-muted mb-3'>{user.role}</h4>
             <div style={{ lineHeight: '2rem' }}>
               <p><strong>Email:</strong> {user.email}</p>
-              {/* <p><strong>Username:</strong> {user.username}</p> */}
               <p><strong>Joined:</strong> {new Date(user.createdAt).toLocaleDateString()}</p>
             </div>
           </div>

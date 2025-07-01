@@ -13,18 +13,7 @@ const schema = yup.object().shape({
 })
 
 const LoginPage = () => {
-  // const [user , setUser] = useState({
-  //   email : '',
-  //   password : ''
-  // })
-  
-  // const handleChange = (e) =>{
-  //   setUser((prev) => ({
-  //     ...prev,
-  //     [e.target.name] : e.target.value
-  //   }))
-  // }
-
+ 
   //validation
   const {
     register,
@@ -39,9 +28,7 @@ const LoginPage = () => {
   const onSubmit = async (data) =>{
 
     try{
-       const res = await api.post('/user/login',
-        //  user 
-        data,{
+       await api.post('/user/login', data,{
           headers : {
             'Content-Type' : 'application/json',
           }
@@ -74,11 +61,7 @@ const LoginPage = () => {
                         <input 
                           type='email' 
                           placeholder= ' Enter your email'
-                          // name='email'
-                          // value={user.email}
-                          // onChange={handleChange}
                           {...register('email')}
-                          
                           />
                           <p className='error'>{errors.email?.message}</p>
                     </div>
@@ -87,16 +70,12 @@ const LoginPage = () => {
                         <input 
                           type='password' 
                           placeholder='Enter your password'
-                          // name='password'
-                          // value={user.password}
-                          // onChange={handleChange}
                           {...register('password')}
                           />
                           <p className='error'>{errors.password?.message}</p>
                     </div>
                     
-                    <button type='submit'>Log In</button>
-
+                  <button type='submit'>Log In</button>
                   </form><br/>
                   <hr className='my-4'/>
                   <div >
@@ -105,10 +84,7 @@ const LoginPage = () => {
               </div>
               <div className='col-md-6'></div>
           </div>
-          
-          </div>
-        
-
+        </div>
       </div>
     </div>
   )

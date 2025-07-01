@@ -1,4 +1,3 @@
-import React, { Children } from 'react'
 import { Navigate } from 'react-router-dom'
 
 const PublicRoute = ({ children }) => {

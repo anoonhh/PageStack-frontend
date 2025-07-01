@@ -6,7 +6,6 @@ import Header from '../components/Header.js'
 
 const SingleBook = () => {
    
-
     const {id} = useParams()
     const [book, setBook] = useState()
     const token = localStorage.getItem('token') 
@@ -25,29 +24,30 @@ const SingleBook = () => {
         )).catch((err) => (
             alert('Unable to load book')
         ))
+        // eslint-disable-next-line  react-hooks/exhaustive-deps
     },[id])
 
      const handleDelete = async () =>{
 
         const confirmed = window.confirm("Are you sure want to delete ?")
         if(!confirmed){
-        return
+            return
         }
         else{
         
-        await api.patch(`/api/book/delete/${id}`, {} ,{
-            headers:{
-            Authorization: `Bearer ${token}`
-            }
-        })
-        .then((res) => {
-            alert('book deleted successfully!')
-            navigate('/books')
-        }).catch((err) => {
-            alert('error deleting book!')
-        })
+            await api.patch(`/api/book/delete/${id}`, {} ,{
+                headers:{
+                Authorization: `Bearer ${token}`
+                }
+            })
+            .then((res) => {
+                alert('book deleted successfully!')
+                navigate('/books')
+            }).catch((err) => {
+                alert('error deleting book!')
+            })
         }
-  }
+    }
 
     if (!book) return <p className="text-center mt-5">Loading book details...</p>
 
@@ -81,7 +81,6 @@ const SingleBook = () => {
                                 </div>
                             )}
                         </div>
-                        
                     </div>
                 </div>
             </div>

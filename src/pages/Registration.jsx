@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+
 import '../styles/registration.css'
 import api from '../api.js'
 import Header from '../components/Header.js'
@@ -23,23 +23,9 @@ const schema = yup.object().shape({
             ["image/jpeg", "image/png", "image/jpg"].includes(value[0]?.type)
             );
         }),
-})
+    })
 
 const Registration = () => {
-    // const [user, setUser] = useState({
-    //     name:'',
-    //     email:'',
-    //     password:'',
-    //     role:'',
-    //     image:null
-    // })
-
-    // const handleChange = (e) => {
-    //     setUser((prev) => ({
-    //         ...prev,
-    //         [e.target.name] : e.target.value
-    //     }))
-    // }
 
     const {
         register,
@@ -49,17 +35,8 @@ const Registration = () => {
         resolver: yupResolver(schema),
     })
 
-    // const handleImageChange = (event) => {
-    //     setUser((prev) =>({
-    //         ...prev,
-    //         image: event.target.files[0]
-    //     }))
-
-    // }
-
-
+    
     const navigate = useNavigate()
-
 
     const onSubmit = async (data) => {
 
@@ -79,24 +56,16 @@ const Registration = () => {
                 console.log('registration success', res.data)
                 alert('Registration Successful!')
 
-                // if(access_token){
-                    localStorage.setItem('token', res.data.access_token)
-                    localStorage.setItem('user',JSON.stringify(res.data.data))
+                localStorage.setItem('token', res.data.access_token)
+                localStorage.setItem('user',JSON.stringify(res.data.data))
 
-                    navigate('/books')
-                // }
-
-                // navigate('/login')
+                navigate('/books')
             }
             catch(error){
                  console.error('registration failed', error.message)
                   alert(error.response?.data?.message || 'Something went wrong during registration')  
             }
-    }
-
-    
-
-    
+        }
 
   return (
     <div>
@@ -116,10 +85,7 @@ const Registration = () => {
                                     className='input-design' 
                                     type='name' 
                                     placeholder='Enter your name!'
-                                    // name='name'
                                     {...register('name')}
-                                    // value={user.name}
-                                    // onChange={handleChange}
                                 />
                                 <p className="error">{errors.name?.message}</p>
                             </div>
@@ -130,9 +96,6 @@ const Registration = () => {
                                     type='email' 
                                     placeholder='Enter your email!'
                                     {...register('email')}
-                                    // name='email'
-                                    // value={user.email}
-                                    // onChange={handleChange}
                                  />
                                  <p className="error">{errors.email?.message}</p>
                             </div>
@@ -142,37 +105,11 @@ const Registration = () => {
                                     className='input-design' 
                                     type='password' 
                                     placeholder='Enter your password!'
-                                    // name='password'
-                                    // value={user.password}
-                                    // onChange={handleChange}
                                     {...register('password')}
                                 />
                                 <p className="error">{errors.password?.message}</p>
                             </div>
-                            {/* <div className='my-4 '>
-                                <label>Role:</label>
-                                <input 
-                                    className='' 
-                                    type='radio'
-                                    name='role' 
-                                    value='Seller' 
-                                    id='seller'
-                                    
-                                    // onChange={handleChange}
-                                    
-                                    />
-                                <label className='mx-2' htmlFor='seller'>Seller</label>
-                                <input 
-                                    className='ms-5' 
-                                    type='radio' 
-                                    name='role' 
-                                    value='buyer' 
-                                    id='buyer'
-                                    // onChange={handleChange}
-                                    />
-                                <label className='mx-2' htmlFor='buyer'>Buyer</label>
-                            </div> */}
-
+                           
                             <div className='my-4'>
                                 <label className='mb-2 d-block'>Role:</label>
                                 <div className="d-flex align-items-center gap-5">
@@ -180,10 +117,8 @@ const Registration = () => {
                                     <input 
                                         className="form-check-input"
                                         type="radio"
-                                        // name="role"
                                         value="seller"
                                         id="seller"
-                                        // onChange={handleChange}
                                         {...register('role')}
                                     />
                                     <label className="form-check-label ms-1" htmlFor="seller">
@@ -195,10 +130,8 @@ const Registration = () => {
                                     <input 
                                         className="form-check-input"
                                         type="radio"
-                                        // name="role"
                                         value="buyer"
                                         id="buyer"
-                                        // onChange={handleChange}
                                         {...register('role')}
                                     />
                                     <label className="form-check-label ms-1" htmlFor="buyer">
@@ -207,17 +140,14 @@ const Registration = () => {
                                     </div>
                                 </div>
                                     <p className="error">{errors.role?.message}</p>
-                                </div>
-
+                            </div>
 
                             <div className='my-4'>
                                 <label>Profile Image</label>
                                 <input 
                                     className='input-design' 
                                     type='file'
-                                    // name='image'
                                     accept='image/*'
-                                    // onChange={handleImageChange}
                                     {...register('image')}
                                     />
                                     <p className="error">{errors.image?.message}</p>
@@ -230,14 +160,9 @@ const Registration = () => {
                         </div>
                     </div>
                 </div>
-               
-
             </div>
         </div>
-    </div>
-
-
-    
+    </div>  
   )
 }
 

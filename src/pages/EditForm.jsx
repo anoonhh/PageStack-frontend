@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import '../styles/editform.css'; 
 import { useNavigate, useParams } from 'react-router-dom';
 import api from '../api';
@@ -51,18 +51,6 @@ const EditBook = () => {
   const token = localStorage.getItem('token')
   const navigate = useNavigate()
 
-
-  const [book , setBook] = useState()
-  //   title:'',
-  //   author:'',
-  //   description:'',
-  //   price:'',
-  //   stock:'',
-  //   category:'',
-  //   rating:'',
-  //   image:''
-  // })
-
   const { register, handleSubmit,formState: { errors }, setValue } = useForm({
         resolver: yupResolver(schema),
     })
@@ -75,7 +63,6 @@ const EditBook = () => {
     })
     .then((res) => {
       const data = res.data.data;
-    setBook(data);
 
     //  use data directly, not setBook.*
     setValue('title', data.title);
@@ -91,31 +78,11 @@ const EditBook = () => {
     .catch((err) =>{
       alert('error fetching data!')
     })
+    // eslint-disable-next-line  react-hooks/exhaustive-deps
   },[id])
 
 
-
-
-  // const handleChange = (event) => {
-  //   setBook((prev) => ({
-  //     ...prev,
-  //     [event.target.name] : event.target.value
-  //   }))
-  // }
-
-  // const handleImageChange = (e) => {
-  //   setBook((prev) => ({
-  //     ...prev,
-  //     image: e.target.files[0]
-  //   }))
-  // }
-
   const onSubmit = async (data) => {
-
-    console.log(data,"data on submission")
-
-    // e.preventDefault()
-    // console.log(book.image,"image from book")
 
     const formData = new FormData()
     formData.append('title', data.title)
@@ -125,31 +92,25 @@ const EditBook = () => {
     formData.append('stock', data.stock)
     formData.append('category', data.category)
     formData.append('rating', data.rating)
-    // formData.append('image', book.image)
 
     if (data.image instanceof File) {
       formData.append('image', data.image);
     }
 
-
-
     await api.patch(`/api/book/updatebook/${id}`,formData , {
       headers: {
         Authorization: `Bearer ${token}`
       }
-    })
-    .then((res) =>{
-      alert('book updated successfully!')
+      })
+      .then((res) =>{
+        alert('book updated successfully!')
 
-      navigate('/books')
-      
-    }).catch((err) => {
-      alert('error updating book!')
-    })
-  }
-
-  // if (!token) return <p className="text-center mt-5">You must be logged in to access..</p>;
-
+        navigate('/books')
+        
+      }).catch((err) => {
+        alert('error updating book!')
+      })
+    }
  
 
   return (
@@ -162,9 +123,6 @@ const EditBook = () => {
             <input 
               type="text" 
               placeholder="Book title" 
-              // name='title'
-              // value={book.title}
-              // onChange={handleChange}
               {...register('title')}
               />
               <p className='error'>{errors.title?.message}</p>
@@ -175,9 +133,6 @@ const EditBook = () => {
             <input 
               type="text" 
               placeholder="Author name" 
-              // name='author'
-              // value={book.author}
-              // onChange={handleChange}
               {...register('author')}
               />
               <p className='error'> {errors.author?.message}</p>
@@ -187,9 +142,6 @@ const EditBook = () => {
             <label>Description</label>
             <textarea 
               placeholder="Description"
-              // name='description'
-              // value={book.description}
-              // onChange={handleChange}
               {...register('description')}
               />
               <p className='error'>{errors.description?.message}</p>
@@ -200,9 +152,6 @@ const EditBook = () => {
             <input 
               type="number" 
               placeholder="Price"  
-              // name='price'
-              // value={book.price}
-              // onChange={handleChange}
               {...register('price')}
               />
               <p className='error'>{errors.price?.message}</p>
@@ -213,9 +162,6 @@ const EditBook = () => {
             <input 
               type="number" 
               placeholder="Stock quantity"
-              // name='stock'
-              // value={book.stock}
-              // onChange={handleChange}
               {...register('stock')}
               />
               <p className='error'>{errors.stock?.message}</p>
@@ -224,9 +170,6 @@ const EditBook = () => {
           <div className="form-group">
             <label>Category</label>
             <select 
-              // name='category'
-              // value={book.category}
-              // onChange={handleChange}
               {...register('category')}
               >
                 <option value={''}>--</option>
@@ -252,9 +195,6 @@ const EditBook = () => {
               type="number" 
               placeholder="Rating" 
               step={'0.1'}
-              // name='rating'
-              // value={book.rating}
-              // onChange={handleChange}
               {...register('rating')}
               />
               <p className='error'>{errors.rating?.message}</p>
@@ -265,8 +205,6 @@ const EditBook = () => {
             <input 
               type="file" 
               accept="image/*" 
-              // name='image'
-              // onChange={handleImageChange}
               {...register('image')}
               />
               <p className='error'>{errors.image?.message}</p>

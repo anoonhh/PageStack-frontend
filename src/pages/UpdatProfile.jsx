@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../api.js';
 import { useForm } from 'react-hook-form'
@@ -18,12 +18,6 @@ const  schema = yup.object().shape({
 
 const UpdatProfile = () => {
 
-  const [user, setUser] = useState({
-    // name: '',
-    // email: '',
-    // image: ''
-  })
-
   const token = localStorage.getItem('token')
   const navigate = useNavigate()
 
@@ -39,61 +33,44 @@ const UpdatProfile = () => {
       }
     }).then((res) => {
       const data = res.data.data
-      setUser(data)
 
       setValue('name',data.name)
       setValue('email',data.email)
-      // setValue('image',data.image)
 
-
-
-    }).catch((err) => {
+    })
+    .catch((err) => {
       alert('Error fetching data!')
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // const handleChange = (e) => {
-  //   setUser((prev) => ({
-  //     ...prev,
-  //     [e.target.name] : e.target.value
-  //   }))
-  // }
-
-  // const handleImageChange = (e) => {
-  //   setUser((prev) => ({
-  //     ...prev,
-  //     image: e.target.files[0]
-  //   }))
-  // }
-
   const onSubmit = async (data) => {
-    // e.preventDefault();
+
 
     const formData = new FormData()
     formData.append('name',data.name)
     formData.append('email',data.email)
 
-   if (data.image && data.image.length > 0) {
-  formData.append('image', data.image[0]);
-}
+    if (data.image && data.image.length > 0) {
+      formData.append('image', data.image[0]);
+    }
 
 
     await api.patch('/editprofile' , formData , {
       headers: {
         Authorization : `Bearer ${token}`
       }
-    })
-    .then((res) => {
-      alert('Profile updated successfully!')
+      })
+      .then((res) => {
+        alert('Profile updated successfully!')
 
-      navigate('/viewprofile')
-    })
-    .catch((err) => {
-      console.log(err.response.data.message,"rrrrr")
-      alert(err.response.data.message)
-    })
-
-  }
+        navigate('/viewprofile')
+      })
+      .catch((err) => {
+        console.log(err.response.data.message,"rrrrr")
+        alert(err.response.data.message)
+      })
+    }
 
 
   return (
@@ -120,9 +97,6 @@ const UpdatProfile = () => {
                       type="text"
                       placeholder="Enter your name"
                       className="form-control"
-                      // name='name'
-                      // value={user.name}
-                      // onChange={handleChange}
                       {...register('name')}
                     />
                     <p className='error'>{errors.name?.message}</p>
@@ -134,9 +108,6 @@ const UpdatProfile = () => {
                       type="email"
                       placeholder="Enter your email"
                       className="form-control"
-                    //   name='email'
-                    //   value={user.email}
-                    //   onChange={handleChange}
                     {...register('email')}
                     />
                     <p className='error'>{errors.email?.message}</p>
@@ -148,8 +119,6 @@ const UpdatProfile = () => {
                       type="file"
                       accept="image/*"
                       className="form-control"
-                      // name='image'
-                      // onChange={handleImageChange}
                       {...register('image')}
                     />
                     <p className='error'>{ errors.image?.message}</p>
@@ -164,16 +133,13 @@ const UpdatProfile = () => {
                       padding: '10px',
                       borderRadius: '10px',
                       fontWeight: '500'
-                    }}
-                  >
+                    }}>
                     Update Profile
                   </button>
                 </form>
               </div>
             </div>
           </div>
-
-
     </div>
   );
 };

@@ -1,7 +1,5 @@
+import '../styles/style.css';
 
-import React from 'react';
-import '../styles/style.css'; // Ensure you add the CSS below
-import { Link } from 'react-router-dom';
 
 const Header = () => {
 
@@ -29,9 +27,7 @@ const Header = () => {
             </>
           )}
          
-        </nav>
-       
-        
+        </nav>  
       </div>
     </header>
   );

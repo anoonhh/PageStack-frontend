@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import '../styles/addform.css'; 
 import { useNavigate } from 'react-router-dom';
 import api from '../api'; 
@@ -12,26 +11,20 @@ const schema = yup.object().shape({
   author: yup.string().required("Author is required"),
   description: yup.string().required('Description is required').min(10,"Description must be atleast 10 characters long"),
   price: yup.number().required('Price is required').positive().typeError('Price must be a positive value'),
-  // stock: yup.number().required('Stock is required').integer().min(0,'Stock cannot be negative'),
   stock: yup
   .number()
   .typeError('Stock must be a number') // handles if user enters letters
-  // .transform((value, originalValue) =>
-  //   String(originalValue).trim() === '' ? undefined : value
-  // )
   .required('Stock is required')
   .integer('Stock must be an integer')
   .min(0, 'Stock cannot be negative'),
 
   category: yup.string().required('Category is required'),
-  // rating: yup.number().required('Rating is required ').min(0,'Rating cannot be less than 0').max(5,'Rating cannot be more than 5'),
   rating: yup
   .number()
   .typeError('Rating must be a number')
   .required('Rating is required')
   .min(0, 'Rating cannot be less than 0')
   .max(5, 'Rating cannot be more than 5'),
-
 
   image : yup.mixed().required("Image is required")
        .test("fileExist", "Please upload a file", (value) => {
@@ -44,21 +37,9 @@ const schema = yup.object().shape({
         ["image/jpeg", "image/png", "image/jpg"].includes(value[0]?.type)
       );
     }),
-  
-
 })
 
 const AddBook = () => {
-  // const [ addBook , setAddBook ] = useState({
-  //   title:'',
-  //   author:'',
-  //   description:'',
-  //   price:0,
-  //   stock:0,
-  //   category:'',
-  //   rating:0,
-  //   image:null
-  // })
 
   const token = localStorage.getItem('token')
 
@@ -73,23 +54,7 @@ const AddBook = () => {
     resolver: yupResolver(schema)
   })
 
-
-  // const handleChange = (e) => {
-  //   setAddBook((prev) => ({
-  //     ...prev,
-  //     [e.target.name] : e.target.value
-  //   }))
-  // }
-
-  // const handleImageChange = (event) => {
-  //   setAddBook((prev) => ({
-  //     ...prev,
-  //     image: event.target.files[0]
-  //   }))
-  // }
-
   const onSubmit = async (data) => {
-    // e.preventDefault();
 
     const formData = new FormData()
     formData.append('title',data.title)
@@ -102,19 +67,18 @@ const AddBook = () => {
     formData.append('image',data.image[0])
 
 
-
-    const res = await api.post('/api/book/addbook',formData, {
+    await api.post('/api/book/addbook',formData, {
       headers: {
         Authorization: `Bearer ${token}`
       }
-    }).then((res) => {
-      alert("Book added successfully")
-      navigate('/books')
-    }).catch((err) => {
-      alert("Book is not added!")
-    })
-    
-  }
+      }).then(() => {
+        alert("Book added successfully")
+        navigate('/books')
+      }).catch(() => {
+        alert("Book is not added!")
+      }) 
+    }
+
   return (
     <div className="add-book-page">
       <div className="form-container">
@@ -125,9 +89,6 @@ const AddBook = () => {
             <input 
               type="text" 
               placeholder="Enter book title" 
-              // name='title'
-              // value={addBook.title}
-              // onChange={handleChange}
               {...register('title')}
               />
               <p className='error'>{errors.title?.message} </p>
@@ -138,9 +99,6 @@ const AddBook = () => {
             <input 
               type="text" 
               placeholder="Author name" 
-              // name='author'
-              // value={addBook.author}
-              // onChange={handleChange}
               {...register('author')}
               />
               <p className='error'>{errors.author?.message}</p>
@@ -150,9 +108,6 @@ const AddBook = () => {
             <label>Description</label>
             <textarea 
             placeholder="Short description..." 
-            // name='description'
-            // value={addBook.description}
-            // onChange={handleChange}
             {...register('description')}
             />
             <p className='error'>{errors.description?.message}</p>
@@ -163,9 +118,6 @@ const AddBook = () => {
             <input 
               type="number" 
               placeholder="Enter price" 
-              // name='price'
-              // value={addBook.price}
-              // onChange={handleChange}
               {...register('price')}
               />
               <p className='error'>{errors.price?.message}</p>
@@ -176,9 +128,6 @@ const AddBook = () => {
             <input 
               type="number" 
               placeholder="Number of books in stock" 
-              // name='stock'
-              // value={addBook.stock}
-              // onChange={handleChange}
               {...register('stock')}
               />
               <p className='error'>{errors.stock?.message}</p>
@@ -188,8 +137,6 @@ const AddBook = () => {
             <label>Category</label>
             <select 
               name='category'
-              // value={addBook.category}
-              // onChange={handleChange}
               {...register('category')}
               >
                 <option value=''>--</option>
@@ -215,9 +162,6 @@ const AddBook = () => {
               type="number" 
               placeholder="Rating"
               step='0.1'
-              // name='rating' 
-              // value={addBook.rating}
-              // onChange={handleChange}
               {...register('rating')}
               />
               <p className='error'>{errors.rating?.message}</p>
@@ -228,8 +172,6 @@ const AddBook = () => {
             <input 
               type="file" 
               accept="image/*" 
-              // name='image'
-              // onChange={handleImageChange}
               {...register('image')}
               />
               <p className='error'>{errors.image?.message}</p>
