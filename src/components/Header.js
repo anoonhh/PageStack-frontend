@@ -12,8 +12,21 @@ const Header = () => {
         <div className="logo">
           <h2><a href='/' className='brand px-4'>PageStack</a></h2>
         </div>
+
+        {/* Hamburger Toggle
+          <button
+            className="navbar-toggler d-md-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navLinks"
+            aria-controls="navLinks"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button> */}
        
-        <nav className="nav-links mx-4 ">
+        <nav className="nav-links  collapse d-md-flex mx-2" id="navLinks">
           {!token ? (
             <>
               <a href='/' className='nav-item px-2'>Home</a>
@@ -27,7 +40,32 @@ const Header = () => {
             </>
           )}
          
-        </nav>  
+        </nav> 
+
+         {/* Mobile Dropdown */}
+        <div className="dropdown d-md-none">
+          <button
+            className="btn"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i className="fa-solid fa-bars"></i>
+          </button>
+          <ul className="dropdown-menu dropdown-menu-end">
+            {!token ? (
+              <>
+                <li><a className="dropdown-item" href="/">Home</a></li>
+                <li><a className="dropdown-item" href="/login"><i className="fa-solid fa-user"></i> Login</a></li>
+              </>
+            ) : (
+              <>
+                <li><a className="dropdown-item" href="/books">Browse</a></li>
+                <li><a className="dropdown-item" href="/viewprofile"> Profile</a></li>
+              </>
+            )}
+          </ul>
+        </div> 
       </div>
     </header>
   );

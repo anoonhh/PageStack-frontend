@@ -380,3 +380,7 @@
 .nav-links .nav-item:hover {
   color: #111;
 }
+
+.dropdown-menu.show{
+  background-color: #00000024 !important;
+}
