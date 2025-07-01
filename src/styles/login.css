@@ -50,3 +50,14 @@
     font-family: 'Courier New', Courier, monospace !important;
     margin-left: 8px !important;
 }
+
+
+
+/* Add this at the end of your login.css file */
+@media (max-width: 768px) {
+  .login input,
+  .login button,
+  .login hr {
+    width: 100%;
+  }
+}

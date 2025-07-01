@@ -4,6 +4,7 @@ import api from '../api.js';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import Header from '../components/Header.js';
 
 const  schema = yup.object().shape({
   name: yup.string().required('Name is required'),
@@ -75,10 +76,10 @@ const UpdatProfile = () => {
 
   return (
     <div>
-  
           <div className='browse'>
             <div className='overlay'>
-              <h1 className='text-center pt-5'>Edit Profile</h1>
+              <Header/>
+              <h1 className='text-center '>Edit Profile</h1>
               <div className='browse-page d-flex justify-content-center'>
                 <form
                   className="w-100"

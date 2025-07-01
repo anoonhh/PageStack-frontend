@@ -84,3 +84,18 @@ input[type='file'] {
     font-family: 'Courier New', Courier, monospace;
     
 }
+
+
+
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  /* Only apply 100% width to non-radio inputs */
+  .registration input:not([type="radio"]),
+  .registration button,
+  .registration hr {
+    width: 100%;
+  }
+}
+

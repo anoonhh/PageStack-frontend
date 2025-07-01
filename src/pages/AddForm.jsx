@@ -4,6 +4,7 @@ import api from '../api';
 import { useForm } from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import Header from '../components/Header';
 
 
 const schema = yup.object().shape({
@@ -81,6 +82,7 @@ const AddBook = () => {
 
   return (
     <div className="add-book-page">
+      <Header/>
       <div className="form-container">
         <h1 className="form-title">Add New Book</h1>
         <form onSubmit={handleSubmit(onSubmit)} encType='multipart/form-data'>

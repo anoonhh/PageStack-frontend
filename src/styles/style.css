@@ -384,3 +384,6 @@
 .dropdown-menu.show{
   background-color: #00000024 !important;
 }
+.hero-overlay.container{
+ max-width: 100%;
+}
