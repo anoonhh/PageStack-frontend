@@ -1,6 +1,6 @@
 .add-book-page {
   min-height: 100vh;
-  background-image: url('../../public/image/bg2.png'); /* Your existing Japanese-style bg */
+  background-image: url('../../public/image/bg2.png'); 
   background-size: cover;
   background-position: center;
   padding: 6rem 2rem;

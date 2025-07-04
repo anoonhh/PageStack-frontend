@@ -18,7 +18,7 @@
 }
 .login input{
     width: 50%;
-    background-color: transparent;
+    background-color: #f4eee8ad;
     border: solid 1px black;
     border-radius: 5px;
     padding: 1%;
@@ -52,8 +52,6 @@
 }
 
 
-
-/* Add this at the end of your login.css file */
 @media (max-width: 768px) {
   .login input,
   .login button,

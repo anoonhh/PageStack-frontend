@@ -82,7 +82,7 @@ const BookBrowse = () => {
                     Prev
                 </button>
                 
-                <span>Page {page} of {totalPages}</span>
+                <span><strong> Page {page} of {totalPages}</strong></span>
 
                 <button
                     className='btn ms-2'

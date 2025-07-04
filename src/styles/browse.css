@@ -1,7 +1,10 @@
+@font-face {
+  font-family: cursiveee;
+  src: url('../../public/fonts/Edu_NSW_ACT_Cursive/static/EduNSWACTCursive-Medium.ttf');
+}
+
 .browse-page {
   padding: 6rem 3rem 3rem 3rem;
-  /* background: linear-gradient(to right, #e9ecef, #fdfdfd); */
-  /* min-height: 100vh; */
   font-family: 'Segoe UI', sans-serif;
 }
 
@@ -61,12 +64,8 @@
   color: #666;
 }
 
-
-
-
 .browse{
   background-image: url('../../public/image/bg2.png');
-  
   background-position: center;
   background-size: cover;
   min-height: 100vh;
@@ -74,12 +73,7 @@
 }
 .overlay{
   background-color: rgb(255 237 255 / 15%);
-  /* height: 100%; */
   min-height: 100vh;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start; */
 }
 
 .browse h1{
@@ -106,4 +100,15 @@
 .pagination button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+.browse h1{
+  font-family: cursiveee;
+  font-size: 3rem;
+}
+
+@media (max-width: 768px) {
+  .browse h1 {
+    font-size: 2rem;
+  }
 }
