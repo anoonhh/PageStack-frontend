@@ -94,8 +94,8 @@ const EditBook = () => {
     formData.append('category', data.category)
     formData.append('rating', data.rating)
 
-    if (data.image instanceof File) {
-      formData.append('image', data.image);
+    if (data.image && data.image.length > 0) {
+      formData.append('image', data.image[0]); // get the first file from FileList
     }
 
     await api.patch(`/api/book/updatebook/${id}`,formData , {
